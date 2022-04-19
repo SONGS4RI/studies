@@ -4,50 +4,8 @@
     <meta charset="utf-8">
     <title>index</title>
     <link rel="stylesheet" href="style.css">
-    <script>
-      var Links = {
-        setColor : function(color){
-          var alist = document.querySelectorAll('a');
-          var i = 0;
-          while(i < alist.length){
-            alist[i].style.color = color;
-            i = i+1;
-          }
-        }
-      }
-
-      var Body = {
-        setColor : function(color){
-          document.querySelector('body').style.color=color;
-        },
-        setBackgruondColor : function(color){
-          document.querySelector('body').style.backgroundColor=color;
-        }
-      }
-
-      function nightDayHandler(self){
-          var target = document.querySelector('body');
-          if(self.value==='night'){
-            document.querySelector('#div1').style.borderColor='white';
-            document.querySelector('h1').style.borderColor='white';
-            Body.setBackgruondColor('black');
-            Body.setColor('white');
-            self.value = 'day'
-            Links.setColor('powderblue');
-
-
-          }else{
-            document.querySelector('#div1').style.borderColor='black';
-            document.querySelector('h1').style.borderColor='black';
-            Body.setBackgruondColor('white');
-            Body.setColor('black');
-            self.value = 'night'
-
-            Links.setColor('blue');
-            }
-
-        }
-    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="colors.js"></script>
   </head>
 
   <body>
@@ -78,11 +36,11 @@
             <p>웹쪽을 할생각이면 HTML, CSS, Javascript를 베이스로 하고 jquery나 react, spring, sql은 추후 알아보도록 하자.</p>
           <h2># 코딩에 유용한 링크들</h2>
           <ol>
-            <li><a href="https://www.netlify.com/", target="_blank", class ="saw">netlify( 파일저장 및 웹관련 유용 )</a></li>
-            <li><a href="https://github.com/", target="_blank", class ="saw">github( 파일저장 및 웹관련 유용 )</a></li>
-            <li><a href="https://opentutorials.org/course/1", target="_blank", class ="saw">생활코딩( 코딩강의 )</a></li>
-            <li><a href="https://unsplash.com/", target="_blank", class ="saw">unsplash( 저작권 무료 img )</a></li>
-            <li><a href="https://caniuse.com", target="_blank", class="saw">많이사용하는 기능인지 확인하는 사이</a></li>
+            <li><a href="https://www.netlify.com/", target="_blank">netlify( 파일저장 및 웹관련 유용 )</a></li>
+            <li><a href="https://github.com/", target="_blank">github( 파일저장 및 웹관련 유용 )</a></li>
+            <li><a href="https://opentutorials.org/course/1", target="_blank">생활코딩( 코딩강의 )</a></li>
+            <li><a href="https://unsplash.com/", target="_blank">unsplash( 저작권 무료 img )</a></li>
+            <li><a href="https://caniuse.com", target="_blank">많이사용하는 기능인지 확인하는 사이</a></li>
 
           </ol>
         </div>
