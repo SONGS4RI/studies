@@ -4,6 +4,50 @@
     <meta charset="utf-8">
     <title>index</title>
     <link rel="stylesheet" href="style.css">
+    <script>
+      var Links = {
+        setColor : function(color){
+          var alist = document.querySelectorAll('a');
+          var i = 0;
+          while(i < alist.length){
+            alist[i].style.color = color;
+            i = i+1;
+          }
+        }
+      }
+
+      var Body = {
+        setColor : function(color){
+          document.querySelector('body').style.color=color;
+        },
+        setBackgruondColor : function(color){
+          document.querySelector('body').style.backgroundColor=color;
+        }
+      }
+
+      function nightDayHandler(self){
+          var target = document.querySelector('body');
+          if(self.value==='night'){
+            document.querySelector('#div1').style.borderColor='white';
+            document.querySelector('h1').style.borderColor='white';
+            Body.setBackgruondColor('black');
+            Body.setColor('white');
+            self.value = 'day'
+            Links.setColor('powderblue');
+
+
+          }else{
+            document.querySelector('#div1').style.borderColor='black';
+            document.querySelector('h1').style.borderColor='black';
+            Body.setBackgruondColor('white');
+            Body.setColor('black');
+            self.value = 'night'
+
+            Links.setColor('blue');
+            }
+
+        }
+    </script>
   </head>
 
   <body>
@@ -27,6 +71,9 @@
           </ol>
         </div>
         <div id="div2">
+          <input type="button" value="night" onclick="
+          nightDayHandler(this);
+          ">
           <h2>1차적인 목표</h2>
             <p>웹쪽을 할생각이면 HTML, CSS, Javascript를 베이스로 하고 jquery나 react, spring, sql은 추후 알아보도록 하자.</p>
           <h2># 코딩에 유용한 링크들</h2>
