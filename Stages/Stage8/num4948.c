@@ -3,9 +3,9 @@ int main()
 {
     int n,arr[246913] = {0,};
     arr[0] = 1, arr[1] = 1;
-   
-    for(int i = 2; i <= n; i++){
-        for(int j = 2; i * j <= 2*n; j++){
+    scanf("%d", &n);
+    for(int i = 2; i <= 246913; i++){
+        for(int j = 2; i * j <= 246913; j++){
             arr[i*j] = 1;
         }
     }
@@ -16,7 +16,7 @@ int main()
             if(arr[i] == 0)
                 cnt++;
         }
-        printf("%d",cnt);
+        printf("%d\n",cnt);
         scanf("%d", &n);
     }
     return 0;
