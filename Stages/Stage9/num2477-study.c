@@ -1,6 +1,6 @@
 #include<stdio.h>
 int star(int i, int j, int n);
-int main()
+int main(void)
 {
     int n;
     scanf("%d",&n);
