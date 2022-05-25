@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include<stdlib.h>
 int main()
 {
     int n,k,l=0,arr[10]={0,},index[10000];
@@ -14,7 +15,7 @@ int main()
             k/=10;
             m++;
         }
-        for(int j=0;arr[j+2]!=0;j++)
+        for(int j=0;j<m-1;j++)
         {
             if(arr[j]==arr[j+1] && arr[j+1]==arr[j+2] && arr[j]==6)
             {
