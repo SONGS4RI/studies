@@ -1,13 +1,36 @@
 #include<stdio.h>
+#include<stdlib.h>
+typedef struct
+{
+    int x;
+    int y;
+} coord;
+int compare(const void *a, const void *b)
+{
+    coord A = *(coord *)a;
+    coord B = *(coord *)b;
+ 
+    if (A.x > B.x)
+        return 1;
+    else if (A.x==B.x)
+    {
+        if (A.y>B.y) return 1;
+        else return -1;
+    }        
+    return -1;
+}
 int main()
 {
-    int n,dot[200001][200001]={0,},x,y;
+    int n;
     scanf("%d",&n);
-    for(int i=0; i<n; i++)
+    coord arr[n];
+    for(int i=0; i<n;i++)
     {
-        scanf("%d %d",&x,&y);
-        dot[x][y] = 1;
+        scanf("%d %d",&arr[i].x,&arr[i].y);
     }
+    qsort(arr,n,sizeof(coord),compare);
+    for(int i=0; i<n;i++) printf("%d %d\n",arr[i].x,arr[i].y);
+    
     
 
     return 0;
