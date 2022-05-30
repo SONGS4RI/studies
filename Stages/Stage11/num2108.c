@@ -23,7 +23,7 @@ int main()
         sum += num;
         arr[num+4000]++;
     }
-    for(int i=8000; i>0; i--)
+    for(int i=8000; i>=0; i--)
     {
         for(int j=0; j<arr[i];j++)
         {
