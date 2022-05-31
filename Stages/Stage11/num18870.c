@@ -5,7 +5,7 @@
 int Bsearch(int arr[], int target,int cnt)
 {
     int low = 0;
-    int high = cnt;
+    int high = cnt-1;
     int mid;
 
     while(low<=high)
