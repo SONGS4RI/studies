@@ -13,6 +13,9 @@ void eratos(int* arr,int n)
 }
 int main()
 {
+    ios_base :: sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
     int n = 1,arr[10001] = {1,1,0,},t;
     eratos(arr,10000);
     cin >> t;
