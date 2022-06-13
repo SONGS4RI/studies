@@ -3,7 +3,7 @@ using namespace std;
 int main()
 {
     int n = 1,arr[246913] = {1,1,0,};
-    for(int i=2; i<=246913;i++)
+    for(int i=2; i<=123456;i++)
         {
             for(int j=2;i*j<=246913;j++) arr[i*j] = 1;
         }
