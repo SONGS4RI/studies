@@ -2,17 +2,17 @@
 #include<string>
 #include<algorithm>
 using namespace std;
-void func(string a,int *res)
+void func(string a,int *res,int up)
 {
     int err=0;
     for(int i=a.length()-1;i>=0;i--)
         {
-            if(res[i]!=0)
+            if(res[i]!=0 || res[i]==0 && err == 0 && up==1)
             {
                 cout << res[i];
                 err =1;
             }
-            else if(res[i]==0 && err == 0) err =0;
+            else if(res[i]==0 && err == 0 && up==0) err =0;
             else cout << res[i];
         }
     if(err==0) cout << 0;
@@ -38,14 +38,15 @@ int main()
     }
     for(int i = b.length(); i<a.length();i++)
     {
-        res[i] = a[i] + up -'0';
-        up =0;
+        res[i] = (a[i] + up -'0')%10;
+        if(a[i] + up -'0'>9) up = 1;
+        else up =0;
     }
     if(up==1)
     {
         cout << 1;
-        func(a,res);
+        func(a,res,up);
     }
-    else func(a,res);
+    else func(a,res,up);
     return 0;
 }
