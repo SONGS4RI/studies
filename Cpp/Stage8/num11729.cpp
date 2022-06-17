@@ -10,7 +10,6 @@ int hanoi(int n,int left, int right, int mid)
         cout << left << " " << right;
         hanoi(n-1,mid,right,left);
     }
-
 }
 int main()
 {
