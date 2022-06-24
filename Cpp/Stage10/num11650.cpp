@@ -3,10 +3,10 @@
 #include <algorithm>
 using namespace std;
 int main(void){
-    int N;
-    cin>>N;
-    vector<vector<int>> arr(N, vector<int>(2,0));
-    for(int i = 0; i < N; i++){
+    int n;
+    cin>>n;
+    vector<vector<int>> arr(n, vector<int>(2,0));
+    for(int i = 0; i < n; i++){
         cin>>arr[i][0];
         cin>>arr[i][1];
     }
