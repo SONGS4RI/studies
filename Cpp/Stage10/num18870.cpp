@@ -1,24 +1,19 @@
 #include<iostream>
-#include<algorithm>
 #include<vector>
+#include<algorithm>
 using namespace std;
-bool compare(pair<int,int>a,pair<int,int>b)
-{
-    return a.first < b.first;
-}
 int main()
 {
-    int n,num,cnt;
-    vector<pair<int,int>> v,res;
+    int n;
     cin >> n;
+    vector<int> v(n);
+    for(int i=0;i<n;i++) cin >> v[i];
+    vector<int> res(v);
+    sort(res.begin(),res.end());
+    res.erase(unique(res.begin(),res.end()),res.end());
     for(int i=0;i<n;i++)
     {
-        cin >> num;
-        v.push_back(make_pair(num,i));
+        cout << lower_bound(res.begin(),res.end(),v[i]) -res.begin() << " ";
     }
-    sort(v.begin(),v.end(),compare);
-    
-
-    
     return 0;
 }
