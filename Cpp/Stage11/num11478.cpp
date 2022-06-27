@@ -7,7 +7,6 @@ int main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     cout.tie(NULL);
-    int cnt=0;
     string s;
     vector<string> v;
     cin >> s;
@@ -24,10 +23,7 @@ int main()
         }
     }
     sort(v.begin(),v.end());
-    for(int i=0;i<v.size();i++)
-    {
-        if(binary_search(v.begin,v.end,v[i])) cnt++;
-    }
+    v.erase(unique(v.begin(),v.end()),v.end());
     cout << v.size();
     return 0;
 }
