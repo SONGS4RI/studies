@@ -1,5 +1,5 @@
 #include<iostream>
-#include<string>
+#include<map>
 using namespace std;
 int main()
 {
@@ -7,24 +7,19 @@ int main()
     cin.tie(NULL);
     cout.tie(NULL);
     int n,m,cnt=0;
-    cin >> n;
-    cin >> m;
-    string s1[n+1];
-    for(int i=0;i<n;i++) cin >> s1[i];
-    string res[m+1];
-    for(int i=0;i<m;i++) cin >> res[i];
-
+    string s;
+    map<string,bool> m1;
+    cin >> n >> m;
     for(int i=0;i<n;i++)
     {
-        for(int j=0;j<m;j++)
-        {
-            if(s1[i].compare(res[j])==0)
-            {
-                cnt++;
-                break;
-            }
-        }
+        cin >> s;
+        m1[s] = true;
     }
-    cout << cnt << "\n";
+    for(int i=0;i<m;i++)
+    {
+        cin >> s;
+        if(m1[s]) cnt++;
+    }
+    cout << cnt;
     return 0;
 }
