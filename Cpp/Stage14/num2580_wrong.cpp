@@ -1,25 +1,22 @@
 #include<iostream>
 #include<vector>
 using namespace std;
-int arr[9][9]={0,},zero=0,flag=0;
+int arr[9][9]={0,},zero=0;
 bool check(int i,int j, int num)
 {
     for(int x=0;x<9;x++)
     {
-        if(arr[x][j]==num && x!=i) return 0;
-        else if (arr[i][x]==num && x!=j) return 0;
+        if(arr[x][j]==num ) return false;
+        if (arr[i][x]==num ) return false;
     }
     for(int x=i-i%3;x<=i-i%3+2;x++)
     {
         for(int y=j-j%3;y<=j-j%3+2;y++)
         {
-            if(arr[x][y]==num)
-            {
-                if(x!=i&&y!=j) return 0;
-            }
+            if(arr[x][y]==num) return false;
         }
     }
-    return 1;
+    return true;
 
 }
 void dfs(int cnt)
@@ -30,9 +27,8 @@ void dfs(int cnt)
         {
             for(int j=0;j<9;j++) cout << arr[i][j] << " ";
             cout << "\n";
-            flag = 1;
-            return;
         }
+        exit(0);
     }
     for(int i=0;i<9;i++)
     {
@@ -46,13 +42,11 @@ void dfs(int cnt)
                     {
                         arr[i][j]== k;
                         dfs(cnt+1);
-                        if(flag==1) break;
+                        arr[i][j]== 0;
                     }
                 }
-                if(flag==1) break;
             }
         }
-        if(flag==1) break;
     }
     return;
 
