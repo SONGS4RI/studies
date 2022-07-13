@@ -10,7 +10,7 @@ int func(int cnt,int sel[],int arr[][21])
         {
             for(int j=0;j<cnt;j++)
             {
-                if(i!=j) res+= arr[sel[i]][sel[j]];
+                res+= arr[sel[i]][sel[j]];
             }
         }
     return res;
