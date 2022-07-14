@@ -23,8 +23,8 @@ void dfs(int cnt,int num)
         if(temp<res_min) res_min = temp;
         return;
     }
-    for(int i=num;i<n;i++)
-    {
+    for(int i=num;i<n;i++) // 123 의 경우와 456 의경우가 동일하므로 n을 미포함해도
+    {                      // 가짓수가 제대로 나온다.
         visited[i] = true;
         dfs(cnt+1,i+1);
         visited[i] = false;
