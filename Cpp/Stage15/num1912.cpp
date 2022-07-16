@@ -1,29 +1,18 @@
-#include<iostream>
-#include<vector>
+#include <iostream>
+#include <algorithm>
 using namespace std;
-vector<pair<int,bool>> v;
-int max=-100000001,n;
-int func()
-{
-    for(int i=0;i<n;i++)
-    {
-        if(v[i].second)
-        {
-            int sum=0;
-            
-        }
-    }
-}
-int main()
-{
-    int num;
-    cin >> n;
-    for(int i=0;i<n;i++) 
-    {
-        cin >> num;
-        if(num>=0) v.push_back(pair<int,bool>(num,true));
-        else v.push_back(pair<int,bool>(num,false));
-    }
+int N[100000];
+int dp[100000];
+int main() {
+	int n;
+	cin >> n;
+	for (int i = 0; i < n; i++) cin >> N[i];
 
-    return 0;
+	dp[0] = N[0];
+	int result = dp[0];
+	for (int i = 1; i < n; i++) {
+		dp[i] = max(dp[i - 1] + N[i], N[i]);
+		result = max(result, dp[i]);
+	}
+	cout << result << endl;
 }
