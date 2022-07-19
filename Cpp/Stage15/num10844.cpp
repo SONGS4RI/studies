@@ -17,11 +17,8 @@ int main()
         dp[i][9] = (dp[i-1][8])%x;
     }
     long long sum = 0;
-    for(int i=0;i<=9;i++) sum += dp[n][i];
+    for(int i=0;i<=9;i++) sum += dp[n][i]%x;
 
     cout << sum%x;
     return 0;
 }
-
-
-
