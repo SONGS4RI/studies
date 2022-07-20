@@ -4,34 +4,33 @@
 using namespace std;
 int main()
 {
-    int n,cnt=1,num;
+    int n,num,res=0;
     cin >> n;
-    vector<int> arr;
+    vector<pair<int,int>> arr;
     for(int i=0;i<n;i++)
     {
         cin >> num;
-        arr.push_back(num);
+        arr.push_back(pair<int,int>(num,i));
     }
-    vector<int> arr_list(arr);
-    sort(arr_list.begin(),arr_list.end());
-    arr_list.erase(unique(arr_list.begin(),arr_list.end()),arr_list.end());
-    auto first = find(arr.begin(),arr.end(),arr_list[0]);
-    int a = first-arr.begin();
-    for(int i=1;i<arr_list.size();i++)
+    sort(arr.begin(),arr.end());
+    for(int i=1;i<n;i++)
     {
-        auto temp = find(arr.begin(),arr.end(),arr_list[i]);
-        int b= temp-arr.begin();
-        if(a > b)
+        if(arr[i].first==arr[i-1].first)
         {
-            arr.erase(temp);
+            arr.erase(arr.begin()+i);
             i--;
-        }
-        else
-        {
-            first = temp;
-            a = first-arr.begin();
+            n--;
         }
     }
-    cout << cnt;
+    for(int i=0;i<arr.size();i++)
+    {
+        int cnt=1;
+        for(int j=0;j<i;j++)
+        {
+            if(arr[j].second<arr[i].second) cnt++;
+        }
+        if(cnt>res) res = cnt;
+    }
+    cout << res;
     return 0;
 }
