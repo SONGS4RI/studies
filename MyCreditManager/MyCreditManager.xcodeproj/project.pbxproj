@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B2985042A0260E500D70291 /* studentGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2985032A0260E500D70291 /* studentGroup.swift */; };
+		0B2985072A02639F00D70291 /* student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2985062A02639F00D70291 /* student.swift */; };
+		0B29850B2A02657600D70291 /* util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B29850A2A02657600D70291 /* util.swift */; };
 		0B4C45CB2A00C279003DB843 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4C45CA2A00C279003DB843 /* main.swift */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +26,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0B2985032A0260E500D70291 /* studentGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = studentGroup.swift; sourceTree = "<group>"; };
+		0B2985062A02639F00D70291 /* student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = student.swift; sourceTree = "<group>"; };
+		0B29850A2A02657600D70291 /* util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = util.swift; sourceTree = "<group>"; };
 		0B4C45C72A00C279003DB843 /* MyCreditManager */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MyCreditManager; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B4C45CA2A00C279003DB843 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -38,6 +44,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0B29850C2A0265FA00D70291 /* class */ = {
+			isa = PBXGroup;
+			children = (
+				0B2985062A02639F00D70291 /* student.swift */,
+				0B2985032A0260E500D70291 /* studentGroup.swift */,
+			);
+			path = class;
+			sourceTree = "<group>";
+		};
 		0B4C45BE2A00C279003DB843 = {
 			isa = PBXGroup;
 			children = (
@@ -57,7 +72,9 @@
 		0B4C45C92A00C279003DB843 /* MyCreditManager */ = {
 			isa = PBXGroup;
 			children = (
+				0B29850C2A0265FA00D70291 /* class */,
 				0B4C45CA2A00C279003DB843 /* main.swift */,
+				0B29850A2A02657600D70291 /* util.swift */,
 			);
 			path = MyCreditManager;
 			sourceTree = "<group>";
@@ -121,6 +138,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				0B4C45CB2A00C279003DB843 /* main.swift in Sources */,
+				0B2985042A0260E500D70291 /* studentGroup.swift in Sources */,
+				0B2985072A02639F00D70291 /* student.swift in Sources */,
+				0B29850B2A02657600D70291 /* util.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
