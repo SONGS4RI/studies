@@ -9,9 +9,9 @@ import Swift
 
 class Student{
     let name: String
-    var subjectGrades: Dictionary <String, String>?
+    var subjectGrades: Dictionary <String, String> = [:]
     func findSubject(subjectName: String) -> Bool {
-        if self.subjectGrades?[subjectName] == nil {
+        if self.subjectGrades[subjectName] == nil {
             return false
         }
         return true

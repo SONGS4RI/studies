@@ -9,10 +9,10 @@ import Swift
 import Foundation
 
 class StudentGroup{
-    var studentGroup: Dictionary<String, Student>?
+    var studentGroup: Dictionary<String, Student> = [:]
 
     func findStudent(studentName: String) -> Student? {
-        guard let student: Student = self.studentGroup?[studentName] else {
+        guard let student: Student = self.studentGroup[studentName] else {
             return nil
         }
         return student
@@ -28,11 +28,7 @@ class StudentGroup{
             return ;
         }
         let student: Student = Student(name: studentName)
-        if self.studentGroup == nil {
-            self.studentGroup = [student.name : student]
-        }else {
-            self.studentGroup?.updateValue(student, forKey: student.name)
-        }
+        self.studentGroup.updateValue(student, forKey: student.name)
         print(student.name, "학생을 추가했습니다.")
     }
     
@@ -42,10 +38,10 @@ class StudentGroup{
             return
         }
         if self.findStudent(studentName: studentName) != nil {
-            self.studentGroup?.removeValue(forKey: studentName)
+            self.studentGroup.removeValue(forKey: studentName)
             print(studentName, "학생을 삭제하였습니다.")
-        }else {
-            print(studentName, "학생을 찾지 못햇습니다.")
+        } else {
+            print(studentName, "학생을 찾지 못했습니다.")
         }
     }
     
@@ -65,14 +61,10 @@ class StudentGroup{
             return
         }
         if student.findSubject(subjectName: nameSubjectGrade[1]) {
-            student.subjectGrades![nameSubjectGrade[1]] = nameSubjectGrade[2]
+            student.subjectGrades[nameSubjectGrade[1]] = nameSubjectGrade[2]
             print("\(nameSubjectGrade[0]) 학생의 \(nameSubjectGrade[1]) 과목의 성적이 \(nameSubjectGrade[2])로 변경되었습니다.")
-        }else {
-            if student.subjectGrades == nil {
-                student.subjectGrades = [nameSubjectGrade[1] : nameSubjectGrade[2]]
-            }else {
-                student.subjectGrades!.updateValue(nameSubjectGrade[2], forKey: nameSubjectGrade[1])
-            }
+        } else {
+            student.subjectGrades.updateValue(nameSubjectGrade[2], forKey: nameSubjectGrade[1])
             print("\(nameSubjectGrade[0]) 학생의 \(nameSubjectGrade[1]) 과목의 성적이 \(nameSubjectGrade[2])로 추가되었습니다.")
         }
     }
@@ -89,9 +81,9 @@ class StudentGroup{
         }
         
         if student.findSubject(subjectName: nameSubject[1]) {
-            student.subjectGrades!.removeValue(forKey: nameSubject[1])
+            student.subjectGrades.removeValue(forKey: nameSubject[1])
             print("\(nameSubject[0]) 학생의 \(nameSubject[1]) 과목의 성적이 삭제되었습니다.")
-        }else {
+        } else {
             print("\(nameSubject[0]) 학생은 \(nameSubject[1]) 과목의 성적이 존재하지않습니다.")
         }
     }
@@ -106,11 +98,11 @@ class StudentGroup{
             return
         }
         
-        if student.subjectGrades?.isEmpty ?? true {
+        if student.subjectGrades.isEmpty {
             print("\(studentName) 학생은 성적이 없습니다.")
         }else {
             var totalGrade: Double = 0, subjectCnt: Int = 0
-            for (key, value) in student.subjectGrades! {
+            for (key, value) in student.subjectGrades {
                 print("\(key): \(value)")
                 subjectCnt += 1
                 totalGrade += scores[value]!
