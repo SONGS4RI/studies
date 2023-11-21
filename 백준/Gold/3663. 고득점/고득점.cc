@@ -13,11 +13,11 @@ int main() {
 		int answer = 0, move = INT32_MAX, size = s.size();
 		for (int i = 0; i < size; i++) {
 			answer += min(s[i] - 'A', 'Z' - s[i] + 1);
+			if (s[i] != 'A') s[i] = 'B';
 		}
 
 		for (int i = 0, j; i < size; i++) {
-			for (j = i + 1; j < size && s[j] == 'A'; j++);
-			if (s[i] == 'A' && j == size + 1) break;
+			j = find(s.begin() + i + 1, s.end(), 'B') - s.begin();
 			int right = i * 2 + size - j;
 			int left = i + (size - j) * 2;
 			move = min(move, min(left, right));
