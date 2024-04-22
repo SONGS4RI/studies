@@ -1,17 +1,16 @@
 package jpabook.jpashop.domain;
 
 import jakarta.persistence.Embeddable;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Embeddable
-@Entity
+@Getter
+@AllArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor
 public class Address {
-	@Id
-	@GeneratedValue
-	private Long id;
-
 	private String city;
 	private String street;
 	private String zipcode;
