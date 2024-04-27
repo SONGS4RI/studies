@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 
 @Embeddable
 @Getter
-@AllArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
 @NoArgsConstructor
 public class Address {
 	private String city;
