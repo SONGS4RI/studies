@@ -27,12 +27,14 @@ public class ItemController {
 
 	@PostMapping("/items/new")
 	public String create(BookForm form) {
+		// 실무에서는 이와같이 엔티티를 컨트롤러 단에서 설계하는 것은 좋지않다.
 		Book book = new Book();
 		book.setName(form.getName());
 		book.setPrice(form.getPrice());
 		book.setStockQuantity(form.getStockQuantity());
 		book.setAuthor(form.getAuthor());
 		book.setIsbn(form.getIsbn());
+		// itemService.createItem(form);
 
 		itemService.saveItem(book);
 		return "redirect:/items";
