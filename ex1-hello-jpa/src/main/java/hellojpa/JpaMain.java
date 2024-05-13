@@ -18,6 +18,10 @@ public class JpaMain {
             Member member = new Member(200L, "member200");
             em.persist(member);
 
+            Member member1 = em.find(Member.class, 200L);
+            em.detach(member1);
+            member1.setName("changed");
+
             em.flush();
             System.out.println("-----------------");
 
