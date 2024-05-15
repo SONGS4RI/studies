@@ -14,19 +14,16 @@ public class JpaMain {
         EntityTransaction tx = em.getTransaction();
         tx.begin();
         try {
-            // 영속
-            Member member = new Member(200L, "member200");
-            em.persist(member);
+            Member m = new Member();
+            m.setId(1L);
+            m.setUsername("a");
+            m.setRoleType(RoleType.ADMIN);
 
-            Member member1 = em.find(Member.class, 200L);
-            em.detach(member1);
-            member1.setName("changed");
 
-            em.flush();
-            System.out.println("-----------------");
-
+            em.persist(m);
             tx.commit();
-            // 이때 모든 쿼리가 날아간다.
+
+
         } catch (Exception e) {
             tx.rollback();
         } finally {
