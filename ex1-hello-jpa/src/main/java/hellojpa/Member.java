@@ -7,15 +7,31 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Lob;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import jakarta.persistence.Transient;
 
 @Entity
+@SequenceGenerator(name = "member_seq_generator",
+sequenceName = "member_seq",
+initialValue = 1, allocationSize = 30)
+
 public class Member {
-	@Id
+	/**
+	 * GenerationType.IDENTITY: MySQL, PostgreSQL, SQL Server...
+	 * 기본 키 생성을 데이터베이스에 위임
+	 * GenerationType.SEQUENCE: Oracle, ...
+	 * 데이터베이스 시퀀스 오브젝트 사용
+	 * GenerationType.TABLE:
+	 *
+	 * GenerationType.AUTO:
+	 */
+	@Id @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "member_seq_generator")
 	private Long id;
 	@Column(name = "name", insertable = true, updatable = false, nullable = false)
 	private String username;
