@@ -68,15 +68,15 @@ ul.dropdown {
 /* content */
 .content {
 	float: left;
-	/* width: auto; */
-	height: 500px;
+	min-height: calc(100vh - 140px);
+	padding: 30px 25px;
 }
 
 /* sidebar */
 .sidebar {
 	float: right;
 	min-width: 200px;
-	height: 500px;
+	min-height: calc(100vh - 140px);
 	background-color: black;
 }
 
@@ -88,4 +88,7 @@ ul.dropdown {
 .foobar {
 	background-color: #22438C;
 	min-height: 50px;
+	position: fixed;
+	bottom: 0;
+	width: 100%;
 }
