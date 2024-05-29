@@ -10,7 +10,6 @@ import (
 	"github.com/PuerkitoBio/goquery"
 )
 
-
 type extractedJob struct {
 	title    string
 	location string
@@ -21,16 +20,20 @@ var baseURL string = "https://www.saramin.co.kr/zf_user/search/recruit?&searchwo
 var extracts = []extractedJob{}
 
 func main() {
+	ch := make(chan []extractedJob, 1)
 	totalPages := getPages()
 	for i := 1; i <= totalPages; i++ {
-		getPageDatas(i)
+		go getPageDatas(i, ch)
+	}
+	for i := 1; i <= totalPages; i++ {
+			extracts = append(extracts, <- ch...)
 	}
 	for i, e := range extracts {
-		fmt.Printf("%d: %s %s %s\n", i, e.title, e.location, e.corp)
+		fmt.Printf("%d: %s [%s] URL: %s\n", i, e.title, e.corp, e.location)
 	}
 }
 
-func getPageDatas(pageNum int) {
+func getPageDatas(pageNum int, ch chan<- []extractedJob) {
 	pageURL := baseURL + "&recruitPage=" + strconv.Itoa(pageNum)
 	res, err := http.Get(pageURL)
 	checkErr(err)
@@ -40,7 +43,7 @@ func getPageDatas(pageNum int) {
 
 	doc, err := goquery.NewDocumentFromReader(res.Body)
 	checkErr(err)
-
+	result := []extractedJob{}
 	doc.Find(".item_recruit").Each(func(i int, s *goquery.Selection) {
 		// title
 		title, _ := s.Find(".job_tit a").Attr("title")
@@ -49,9 +52,9 @@ func getPageDatas(pageNum int) {
 		href = "https://www.saramin.co.kr" + href
 		// corp
 		corp := strings.TrimSpace(s.Find(".corp_name a").Text())
-
-		extracts = append(extracts, extractedJob{title: title, location: href, corp: corp})
+		result = append(result, extractedJob{title: title, location: href, corp: corp})
 	})
+	ch <- result
 }
 
 func getPages() int {
@@ -82,13 +85,3 @@ func checkCode(res *http.Response) {
 		log.Fatalln("Request failed with status:", res.StatusCode)
 	}
 }
-
-//div class="area_job"
-//<a target="_blank" title="파이썬 개발자" onclick="try{s_trackApply(this, &#39;search&#39;, &#39;generic&#39;)}catch(e){};" rel="" class="data_layer" data-data_layer="keyword_free|paid_n" href="/zf_user/jobs/relay/view?view_type=search&amp;rec_idx=48123519&amp;location=ts&amp;searchword=python&amp;searchType=search&amp;paid_fl=n&amp;search_uuid=f84cc277-6350-4bfe-b3ab-17743d5ddc83">
-
-/*
-<div class="pagination">
-<a href="#recruit_info" page="2" class=" page page_move track_event" data-track_event="total_search|search_recruit|pagination|2">
-
-
-*/
