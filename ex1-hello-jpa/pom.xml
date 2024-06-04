@@ -35,6 +35,14 @@
             <version>2.2.224</version>
         </dependency>
 
+        <!-- Lombok 의존성 추가 -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.28</version> <!-- 최신 버전을 확인하고 사용할 수도 있습니다 -->
+            <scope>provided</scope>
+        </dependency>
+
         <!-- logback -->
 <!--
         <dependency>
