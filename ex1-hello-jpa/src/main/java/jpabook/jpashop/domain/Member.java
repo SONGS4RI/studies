@@ -1,11 +1,15 @@
 package jpabook.jpashop.domain;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import lombok.Cleanup;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,11 +18,13 @@ import lombok.Setter;
 @Setter
 public class Member {
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "member_id")
+	@Column(name = "MEMBER_ID")
 	private Long id;
-	@Column(length = 10)
+	@Column(name = "MEMBER_NAME")
 	private String name;
-	private String city;
-	private String street;
-	private String zipcode;
+
+	@ManyToOne
+	@JoinColumn(name = "TEAM_ID")
+	@Cascade(value = CascadeType.ALL)
+	private Team team;
 }
