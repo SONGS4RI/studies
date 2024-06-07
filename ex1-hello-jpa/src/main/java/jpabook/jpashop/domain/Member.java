@@ -25,6 +25,5 @@ public class Member {
 
 	@ManyToOne
 	@JoinColumn(name = "TEAM_ID")
-	@Cascade(value = CascadeType.ALL)
 	private Team team;
 }
