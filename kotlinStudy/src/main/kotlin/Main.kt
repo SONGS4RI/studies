@@ -9,6 +9,11 @@ fun main() {
 
     println("$username && ${changeName}!!")
 
+    var test: Int? = null
+
+    test?.let {
+        println("${it}출력 안됨!!!!!")
+    }
     var num1 = 10
     var num2 = 20
     println(kotlin.math.max(num1, num2))
