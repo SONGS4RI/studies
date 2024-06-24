@@ -13,14 +13,14 @@ import lombok.Setter;
 public class Item {
 	@Id @GeneratedValue
 	@Column(name = "ITEM_ID")
-	Long id;
+	private Long id;
 
 	@Column(name = "NAME")
-	String name;
+	private String name;
 
 	@Column(name = "PRICE")
-	Long price;
+	private Long price;
 
 	@Column(name = "STOCKQUANTITY")
-	Long stockQuantity;
+	private Long stockQuantity;
 }

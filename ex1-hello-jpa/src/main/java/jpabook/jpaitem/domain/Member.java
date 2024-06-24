@@ -3,11 +3,7 @@ package jpabook.jpaitem.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,16 +13,16 @@ import lombok.Setter;
 public class Member {
 	@Id @GeneratedValue
 	@Column(name = "MEMBER_ID")
-	Long id;
+	private Long id;
 	@Column(name = "NAME")
-	String name;
+	private String name;
 	@Column(name = "CITY")
-	String city;
+	private String city;
 	@Column(name = "STREET")
-	String street;
+	private String street;
 	@Column(name = "ZIPCODE")
-	String zipcode;
+	private String zipcode;
 
 	@OneToMany(mappedBy = "member")
-	List<Order> orders = new ArrayList<>();
+	private List<Order> orders = new ArrayList<>();
 }
