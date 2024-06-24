@@ -26,8 +26,9 @@ public class Order {
 	@Column(name = "ORDERDATE")
 	private LocalDateTime orderDate;
 
-	@Column(name = "STATUS")
-	private Status status;
+	@OneToOne
+	@JoinColumn(name = "DELIVERY_ID")
+	private Delivery delivery;
 
 	public void addOrderItem(OrderItem orderItem) {
 		orderItems.add(orderItem);
