@@ -10,7 +10,9 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
-public class Item {
+@Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn(name = "DTYPE")// DTYPE 생김
+public abstract class Item {
 	@Id @GeneratedValue
 	@Column(name = "ITEM_ID")
 	private Long id;
