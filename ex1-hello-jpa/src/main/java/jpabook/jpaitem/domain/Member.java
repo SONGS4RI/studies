@@ -1,5 +1,6 @@
 package jpabook.jpaitem.domain;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,12 +17,12 @@ public class Member {
 	private Long id;
 	@Column(name = "NAME")
 	private String name;
-	@Column(name = "CITY")
-	private String city;
-	@Column(name = "STREET")
-	private String street;
-	@Column(name = "ZIPCODE")
-	private String zipcode;
+
+	@Embedded
+	private Period period;
+	@Embedded
+	private Address address;
+
 
 	@OneToMany(mappedBy = "member")
 	private List<Order> orders = new ArrayList<>();
