@@ -1,0 +1,109 @@
+services:
+  redis-master-1:
+    container_name: redis-master-1
+    build:
+      context: .
+      dockerfile: Dockerfile.redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-master-1-data:/data
+      - ./redis.conf:/usr/local/etc/redis/redis.conf
+    networks:
+      - redis-cluster-net
+
+  redis-master-2:
+    container_name: redis-master-2
+    build:
+      context: .
+      dockerfile: Dockerfile.redis
+    ports:
+      - "6380:6379"
+    volumes:
+      - redis-master-2-data:/data
+      - ./redis.conf:/usr/local/etc/redis/redis.conf
+    networks:
+      - redis-cluster-net
+
+  redis-master-3:
+    container_name: redis-master-3
+    build:
+      context: .
+      dockerfile: Dockerfile.redis
+    ports:
+      - "6381:6379"
+    volumes:
+      - redis-master-3-data:/data
+      - ./redis.conf:/usr/local/etc/redis/redis.conf
+    networks:
+      - redis-cluster-net
+
+  redis-slave-1:
+    container_name: redis-slave-1
+    build:
+      context: .
+      dockerfile: Dockerfile.redis
+    ports:
+      - "6382:6379"
+    volumes:
+      - redis-slave-1-data:/data
+      - ./redis.conf:/usr/local/etc/redis/redis.conf
+    networks:
+      - redis-cluster-net
+
+  redis-slave-2:
+    container_name: redis-slave-2
+    build:
+      context: .
+      dockerfile: Dockerfile.redis
+    ports:
+      - "6383:6379"
+    volumes:
+      - redis-slave-2-data:/data
+      - ./redis.conf:/usr/local/etc/redis/redis.conf
+    networks:
+      - redis-cluster-net
+
+  redis-slave-3:
+    container_name: redis-slave-3
+    build:
+      context: .
+      dockerfile: Dockerfile.redis
+    ports:
+      - "6384:6379"
+    volumes:
+      - redis-slave-3-data:/data
+      - ./redis.conf:/usr/local/etc/redis/redis.conf
+    networks:
+      - redis-cluster-net
+
+  redis-setup:
+    container_name: redis-setup
+    build:
+      context: .
+      dockerfile: Dockerfile.alpine
+    depends_on:
+      - redis-master-1
+      - redis-master-2
+      - redis-master-3
+      - redis-slave-1
+      - redis-slave-2
+      - redis-slave-3
+    environment:
+      - REDIS_PASSWORD=password
+    volumes:
+      - ./setup-redis-cluster.sh:/usr/local/etc/redis/setup-redis-cluster.sh
+    networks:
+      - redis-cluster-net
+    command: ["sh", "-c", "chmod +x /usr/local/etc/redis/setup-redis-cluster.sh && /usr/local/etc/redis/setup-redis-cluster.sh"]
+
+volumes:
+  redis-master-1-data:
+  redis-master-2-data:
+  redis-master-3-data:
+  redis-slave-1-data:
+  redis-slave-2-data:
+  redis-slave-3-data:
+
+networks:
+  redis-cluster-net:
