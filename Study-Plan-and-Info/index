@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>index</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="colors.js"></script>
+
+  </head>
+
+  <body>
+    <h1><a href="index.html", title = "index", style="text-decoration:none">내가 코딩을 하기위해 공부해야할만한 언어들</a></h1>
+    <div id="grid1">
+
+    <div id="div1"> <!--style="background-color:cyan; width:1000px ; "height:500px-->
+      <ol>
+        <li><a href="Java.html", title = "Java">Java</a></li>
+        <li><a href="Javascript.html", title = "Javascript">Javascript</a></li>
+        <li><a href="HTML.html", title = "HTML">HTML</a></li>
+        <li><a href="CSS.html", title = "CSS">CSS</a></li>
+        <li><a href="Node.js.html", title = "Node.js">Node.js</a></li>
+        <li><a href="C.html", title = "C">C</a></li>
+        <li><a href="C++.html", title = "C++">C++</a></li>
+        <li><a href="Python.html", title = "Python">Python</a></li>
+        <li><a href="Perl.html", title = "Perl">Perl</a></li>
+        <li><a href="VRML.html", title = "VRML">VRML</a></li>
+        <li><a href="WML.html", title = "WML">WML</a></li>
+        <li><a href="SGML.html", title = "SGML">SGML</a></li>
+      </ol>
+    </div>
+    <div id="div2">
+      <input type="button" value="night" onclick="
+      nightDayHandler(this);
+      ">
+      <h2>1차적인 목표</h2>
+      <p>웹쪽을 할생각이면 HTML, CSS, Javascript를 베이스로 하고 jquery나 react, spring, sql은 추후 알아보도록 하자.</p>
+      <h2># 코딩에 유용한 링크들</h2>
+      <ol>
+        <li><a href="https://www.netlify.com/", target="_blank">netlify( 파일저장 및 웹관련 유용 )</a></li>
+        <li><a href="https://github.com/", target="_blank">github( 파일저장 및 웹관련 유용 )</a></li>
+        <li><a href="https://opentutorials.org/course/1", target="_blank">생활코딩( 코딩강의 )</a></li>
+        <li><a href="https://unsplash.com/", target="_blank">unsplash( 저작권 무료 img )</a></li>
+        <li><a href="#", target="_blank"></a></li>
+
+    </div>
+</div>
+    </ol>
+  </body>
+</html>
