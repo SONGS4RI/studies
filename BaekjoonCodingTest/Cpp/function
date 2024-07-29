@@ -1,0 +1,2 @@
+int isdigit(int c); // <cctype>
+// 숫자이면 0이 아닌 숫자(true) 반환, 숫자가 아니면 0을 반환

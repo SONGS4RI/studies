@@ -1,0 +1,10 @@
+git init : 초기화작업
+git add . : 변화한 파일 감지
+git commit -m "first commit" : 커밋과정
+git push origin master : 푸쉬
+
+
+git clone <주소> : 해당 주소 깃 클론화 ( 보통 프로젝트할때 쓴다고함)
+clone에 대해서는 나중에 다시 알아보자
+
+docker의 경우 나중에 사용 지금은 굳이
