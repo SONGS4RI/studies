@@ -22,10 +22,15 @@ public class JpqlMain {
 			Query query2 = em.createQuery("select m from Member m");
 
 
+			List<Member> members = em.createQuery("select m from Member m", Member.class).getResultList();
+			Member findMember = members.get(0);
+			findMember.setUsername("changed");
+			
+			List<Team> teams = em.createQuery("select t from Member m join m.team t", Team.class).getResultList();
 
-
-//			em.createQuery()
-
+			// dto 로 뽑기
+			List<MemberDto> resultList = em.createQuery("select new jpql.MemberDto(m.username, m.age) from Member m", MemberDto.class)
+					.getResultList();
 			tx.commit();
 		} catch (Exception e) {
 			tx.rollback();
