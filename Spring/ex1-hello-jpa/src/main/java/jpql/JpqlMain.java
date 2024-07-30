@@ -19,12 +19,13 @@ public class JpqlMain {
 
 			Member member = new Member();
 			member.setAge(10);
+			member.setMemberType(MemberType.USER);
 			member.setUsername("member1");
 			member.changeTeam(team);
 
 			em.persist(member);
 
-			String query = "select m from Member m where exists (select t from m.team t where t.name = 'team1')";
+			String query = "select m.username, 'Hello', true From Member m where m.memberType = jpql.MemberType.ADMIN";
 			List<Member> result = em.createQuery(query, Member.class)
 					.getResultList();
 
