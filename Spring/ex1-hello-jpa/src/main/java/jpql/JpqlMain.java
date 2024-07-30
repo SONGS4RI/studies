@@ -24,12 +24,8 @@ public class JpqlMain {
 
 			em.persist(member);
 
-			String query1 = "select m from Member m inner join m.team t";
-			List<Member> result1 = em.createQuery(query1, Member.class)
-					.getResultList();
-
-			String query2 = "select m from Member m left join m.team t";
-			List<Member> result2 = em.createQuery(query2, Member.class)
+			String query = "select m from Member m where exists (select t from m.team t where t.name = 'team1')";
+			List<Member> result = em.createQuery(query, Member.class)
 					.getResultList();
 
 			tx.commit();
