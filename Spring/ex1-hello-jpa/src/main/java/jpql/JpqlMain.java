@@ -13,17 +13,24 @@ public class JpqlMain {
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
 		try {
+			Team team = new Team();
+			team.setName("team1");
+			em.persist(team);
+
 			Member member = new Member();
 			member.setAge(10);
 			member.setUsername("member1");
+			member.changeTeam(team);
+
 			em.persist(member);
 
-			em.createQuery("select m from Member m order by m.age desc", Member.class)
-					.setFirstResult(0)
-					.setMaxResults(10)
+			String query1 = "select m from Member m inner join m.team t";
+			List<Member> result1 = em.createQuery(query1, Member.class)
 					.getResultList();
 
-			
+			String query2 = "select m from Member m left join m.team t";
+			List<Member> result2 = em.createQuery(query2, Member.class)
+					.getResultList();
 
 			tx.commit();
 		} catch (Exception e) {
