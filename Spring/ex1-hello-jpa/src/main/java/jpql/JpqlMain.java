@@ -25,8 +25,17 @@ public class JpqlMain {
 
 			em.persist(member);
 
-			String query = "select m.username, 'Hello', true From Member m where m.memberType = jpql.MemberType.ADMIN";
-			List<Member> result = em.createQuery(query, Member.class)
+			String query1 = "select " +
+								"case when m.age <= 10 then '학생요금' " +
+								"	  when m.age >= 60 then '경로요금' " +
+								"     else '일반요금' " +
+								"end " +
+					"from Member m";
+			List<Member> result1 = em.createQuery(query1, Member.class)
+					.getResultList();
+
+			String query2 = "select coalesce(m.username, '이름 없는 회원') from Member m";
+			List<Member> result2 = em.createQuery(query2, Member.class)
 					.getResultList();
 
 			tx.commit();
