@@ -25,7 +25,7 @@ public class JpqlMain {
 			List<Member> members = em.createQuery("select m from Member m", Member.class).getResultList();
 			Member findMember = members.get(0);
 			findMember.setUsername("changed");
-			
+
 			List<Team> teams = em.createQuery("select t from Member m join m.team t", Team.class).getResultList();
 
 			// dto 로 뽑기
