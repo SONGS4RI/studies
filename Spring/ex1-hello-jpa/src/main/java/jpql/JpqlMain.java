@@ -18,19 +18,13 @@ public class JpqlMain {
 			member.setUsername("member1");
 			em.persist(member);
 
-			TypedQuery<Member> query1 = em.createQuery("select m from Member m", Member.class);
-			Query query2 = em.createQuery("select m from Member m");
-
-
-			List<Member> members = em.createQuery("select m from Member m", Member.class).getResultList();
-			Member findMember = members.get(0);
-			findMember.setUsername("changed");
-
-			List<Team> teams = em.createQuery("select t from Member m join m.team t", Team.class).getResultList();
-
-			// dto 로 뽑기
-			List<MemberDto> resultList = em.createQuery("select new jpql.MemberDto(m.username, m.age) from Member m", MemberDto.class)
+			em.createQuery("select m from Member m order by m.age desc", Member.class)
+					.setFirstResult(0)
+					.setMaxResults(10)
 					.getResultList();
+
+			
+
 			tx.commit();
 		} catch (Exception e) {
 			tx.rollback();
