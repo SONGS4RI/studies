@@ -25,19 +25,12 @@ public class JpqlMain {
 
 			em.persist(member);
 
-			String query1 = "select " +
-								"case when m.age <= 10 then '학생요금' " +
-								"	  when m.age >= 60 then '경로요금' " +
-								"     else '일반요금' " +
-								"end " +
-					"from Member m";
-			List<Member> result1 = em.createQuery(query1, Member.class)
-					.getResultList();
+			// 컬렉션에서는 탐색이 불가능하기 때문에 명시적으로 조인을 해주어야 탐색이 가능
+			String query1 = "select t.members from Team t";
+			List<Member> members1 = em.createQuery(query1, Member.class).getResultList();
 
-			String query2 = "select coalesce(m.username, '이름 없는 회원') from Member m";
-			List<Member> result2 = em.createQuery(query2, Member.class)
-					.getResultList();
-
+			String query2 = "select m.username from Team t join t.members m";
+			List<Member> members2 = em.createQuery(query2, Member.class).getResultList();
 			tx.commit();
 		} catch (Exception e) {
 			tx.rollback();
