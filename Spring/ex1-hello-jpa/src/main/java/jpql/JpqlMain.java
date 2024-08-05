@@ -13,24 +13,36 @@ public class JpqlMain {
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
 		try {
-			Team team = new Team();
-			team.setName("team1");
-			em.persist(team);
+			Team teamA = new Team();
+			teamA.setName("teamA");
+			em.persist(teamA);
 
-			Member member = new Member();
-			member.setAge(10);
-			member.setMemberType(MemberType.USER);
-			member.setUsername("member1");
-			member.changeTeam(team);
+			Team teamB = new Team();
+			teamA.setName("teamB");
+			em.persist(teamB);
 
-			em.persist(member);
+			Member member1 = new Member();
+			member1.setUsername("member1");
+			member1.changeTeam(teamA);
+			em.persist(member1);
 
-			// 컬렉션에서는 탐색이 불가능하기 때문에 명시적으로 조인을 해주어야 탐색이 가능
-			String query1 = "select t.members from Team t";
-			List<Member> members1 = em.createQuery(query1, Member.class).getResultList();
+			Member member2 = new Member();
+			member2.setUsername("member2");
+			member2.changeTeam(teamA);
+			em.persist(member2);
 
-			String query2 = "select m.username from Team t join t.members m";
-			List<Member> members2 = em.createQuery(query2, Member.class).getResultList();
+			Member member3 = new Member();
+			member3.setUsername("member3");
+			member3.changeTeam(teamA);
+			em.persist(member3);
+
+			// n + 1 문제 야기
+			String query1 = "select m from Member m";
+			List<Member> result1 = em.createQuery(query1, Member.class).getResultList();
+			// 한방 쿼리
+			String query2 = "select distinct m from Member m join fetch m.team";
+			List<Member> result2 = em.createQuery(query2, Member.class).getResultList();
+			// 페치 조인을 사용할 때만 연관된 엔티티도 함께 조회(즉시 로딩)
 			tx.commit();
 		} catch (Exception e) {
 			tx.rollback();
