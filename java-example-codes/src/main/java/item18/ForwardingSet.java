@@ -48,31 +48,31 @@ public class ForwardingSet<E> implements Set<E> {
 
     @Override
     public boolean remove(Object o) {
-        return false;
+        return s.remove(o);
     }
 
     @Override
     public boolean containsAll(Collection<?> c) {
-        return false;
+        return s.containsAll(c);
     }
 
     @Override
     public boolean addAll(Collection<? extends E> c) {
-        return false;
+        return s.addAll(c);
     }
 
     @Override
     public boolean retainAll(Collection<?> c) {
-        return false;
+        return s.retainAll(c);
     }
 
     @Override
     public boolean removeAll(Collection<?> c) {
-        return false;
+        return s.removeAll(c);
     }
 
     @Override
     public void clear() {
-
+        s.clear();
     }
 }
