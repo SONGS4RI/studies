@@ -5,7 +5,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-// ÄÚµå 18-2 ·¡ÆÛ Å¬·¡½º - »ó¼Ó ´ë½Å ÄÄÆ÷Áö¼ÇÀ» »ç¿ëÇß´Ù. (117-118ÂÊ)
 public class InstrumentedSet<E> extends ForwardingSet<E> {
     private int addCount = 0;
 
@@ -27,7 +26,7 @@ public class InstrumentedSet<E> extends ForwardingSet<E> {
 
     public static void main(String[] args) {
         InstrumentedSet<String> s = new InstrumentedSet<>(new HashSet<>());
-        s.addAll(List.of("Æ½", "Å¹Å¹", "Æã"));
+        s.addAll(List.of("Æ½", "Å¹Å¹", "ï¿½ï¿½"));
         System.out.println(s.getAddCount());
     }
 }

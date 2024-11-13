@@ -1,5 +1,6 @@
 package item30;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.function.UnaryOperator;
@@ -27,5 +28,6 @@ public class Main {
         for (String s : strings) {
             System.out.println(sameString.apply(s));
         }
+        Set<String> set1 = (Set<String>) Collections.EMPTY_SET;
     }
 }

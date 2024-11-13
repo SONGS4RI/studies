@@ -3,14 +3,13 @@ package item19;
 import java.time.Instant;
 
 public final class Sub extends Super {
-    // ÃÊ±âÈ­µÇÁö ¾ÊÀº final ÇÊµå. »ý¼ºÀÚ¿¡¼­ ÃÊ±âÈ­ÇÑ´Ù.
     private final Instant instant;
 
     Sub() {
         instant = Instant.now();
     }
 
-    // ÀçÁ¤ÀÇ °¡´É ¸Þ¼­µå. »óÀ§ Å¬·¡½ºÀÇ »ý¼ºÀÚ°¡ È£ÃâÇÑ´Ù.
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¼ï¿½ï¿½ï¿½. ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ú°ï¿½ È£ï¿½ï¿½ï¿½Ñ´ï¿½.
     @Override public void overrideMe() {
         System.out.println(instant);
     }
