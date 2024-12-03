@@ -1,8 +1,11 @@
 spring:
   cloud:
     function:
-      definition: input;dlq # input, dlq 함수 정의를 해야 제대로 바인딩이 된다.
+      definition: input;output;dlq; # input, dlq 함수 정의를 해야 제대로 바인딩이 된다.
     stream:
+      poller:
+        fixed-delay: 5000
+        initial-delay: 0
       bindings:
         input-in-0:
           destination: test-topic
@@ -15,6 +18,9 @@ spring:
           destination: test-topic-dlq
           content-type: application/json
           group: test-dlq-group
+        output-out-0:
+          destination: test-topic
+          content-type: application/json
       kafka:
         bindings:
           input-in-0:
