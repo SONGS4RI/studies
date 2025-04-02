@@ -1,0 +1,14 @@
+bootJar { enabled = true }
+
+jar { enabled = false }
+
+version = "v1.0.0"
+
+dependencies {
+}
+
+processResources {
+    filesMatching("application.yml") {
+        expand(project.properties)
+    }
+}

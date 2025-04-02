@@ -7,6 +7,8 @@ import org.apache.kafka.clients.producer.ProducerRecord;
 
 import java.util.Properties;
 
+import static java.lang.Thread.sleep;
+
 public class ExactlyOnceProducer {
     public static void main(String[] args) {
         Properties props = new Properties();
@@ -25,10 +27,14 @@ public class ExactlyOnceProducer {
         producer.beginTransaction(); //트랜잭션을 시작합니다.
 
         try {
+            System.out.println("Sleeping for 10 seconds");
+            sleep(10000);
+            System.out.println("Sending message");
             for (int i = 0; i < 1; i++) {
-                ProducerRecord<String, String> record = new ProducerRecord<>("test-topic", "test message" + i);
+                ProducerRecord<String, String> record = new ProducerRecord<>("test-topic", "filed");
                 producer.send(record);
                 producer.flush();
+                producer.abortTransaction(); //트랜잭션을 취소합니다.
                 System.out.println("Message sent successfully");
             }
         } catch (Exception e) {

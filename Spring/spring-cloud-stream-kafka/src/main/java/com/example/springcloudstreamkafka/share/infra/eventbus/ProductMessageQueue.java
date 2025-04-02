@@ -9,6 +9,6 @@ import java.util.concurrent.LinkedBlockingQueue;
 
 @Component
 public class ProductMessageQueue {
-    public final BlockingQueue<Message<Product>> buffer = new LinkedBlockingQueue<>(5);
-    public final BlockingQueue<Message<Product>> dlq = new LinkedBlockingQueue<>(5);
+    public final BlockingQueue<Message<Product>> buffer = new LinkedBlockingQueue<>(1000);
+    public final BlockingQueue<Message<Product>> dlq = new LinkedBlockingQueue<>(1000);
 }

@@ -14,6 +14,7 @@ spring:
           consumer:
             maxAttempts: 3 # 최대 3번 재시도
             back-off-initial-interval: 1000 # 1초 간격으로 재시도
+            concurrency: 3 # 3개의 컨슈머로 병렬 처리
         dlq-in-0:
           destination: test-topic-dlq
           content-type: application/json

@@ -24,8 +24,7 @@ public class MessageConsumer {
                 // dlq 설정을 해두었다면 자동으로 설정되어진 토픽으로 메시지 전송
                 throw new RuntimeException("Queue is full, message discarded: " + message);
             }
-
-            System.out.println("Message added to queue: " + message.getPayload());
+            System.out.println("Message added to queue: " + message.getPayload() + ", headers: " + message.getHeaders());
         };
     }
 
